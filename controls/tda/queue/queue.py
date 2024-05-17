@@ -1,6 +1,6 @@
 from controls.tda.queue.queueOperations import QueueOperation
 
-class Queue():
+class Queue:
     def __init__(self, tope):
         self.__queue = QueueOperation(tope)
 
@@ -8,7 +8,7 @@ class Queue():
         self.__queue.queue(data)
 
     def pop(self):
-        return self.__queue.dequeue
+        self.__queue.dequeue
     
     @property
     def print(self):

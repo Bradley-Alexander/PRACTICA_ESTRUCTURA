@@ -152,8 +152,9 @@ class Linked_List(object):
         while node != None:
             data += str(node._data) + "\t"
             node = node._next
-        print("Lista de datos")
+        print("Lista de Regitros:")
         print(data)
+
 # #Pasar la lista a arreglo
     # @property
     # def toArray(self):
