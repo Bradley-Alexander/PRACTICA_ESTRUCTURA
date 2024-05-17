@@ -1,4 +1,5 @@
 import sys
+import copy
 sys.path.append('../')
 from controls.tda.queue.queue import Queue
 from controls.tda.linked.linkedList import Linked_List
@@ -9,38 +10,66 @@ servidor1 = ServidorPublico()
 servidor2 = ServidorPublico()
 servidor3 = ServidorPublico()
 
-servidor1.__nombre = "Juan"
-servidor1.__ventanilla = 1
-servidor1.__cola = Queue(3)
+atencion = Atencion()
 
-atencion1 = Atencion()
+print("Ventanilla 1")
+atencion._nombre = "Estalin"
+atencion._tiempoDeAtencion = "30 minutos"
+atencion._calificacion = "Excelente"
+servidor1._cola.push(copy.deepcopy(atencion))
 
-atencion1._tiempoDeAtencion = "30 minutos"
-atencion1._calificacion = "Excelente"
-atencion1._nombre = "Estalin"
+atencion._nombre = "Pepito"
+atencion._tiempoDeAtencion = "10 minutos"
+atencion._calificacion = "Malo"
+servidor1._cola.push(copy.deepcopy(atencion))
 
-servidor1.__cola.push(atencion1)
+atencion._nombre = "Santi"
+atencion._tiempoDeAtencion = "19 minutos"
+atencion._calificacion = "Regular"
+servidor1._cola.push(copy.deepcopy(atencion))
 
-atencion2 = Atencion()
-
-atencion2._tiempoDeAtencion = "10 minutos"
-atencion2._calificacion = "Malo"
-atencion2._nombre = "Pepito"
-
-servidor1.__cola.push(atencion2)
+servidor1._cola.print
 
 
-atencion3 = Atencion()
 
-atencion3._tiempoDeAtencion = "10 minutos"
-atencion3._calificacion = "Malo"
-atencion3._nombre = "Pepito"
+print("Ventanilla 2")
+atencion._nombre = "Estalin"
+atencion._tiempoDeAtencion = "30 minutos"
+atencion._calificacion = "Excelente"
+servidor2._cola.push(copy.deepcopy(atencion))
 
-servidor1.__cola.push(atencion3)
+atencion._nombre = "Pepito"
+atencion._tiempoDeAtencion = "10 minutos"
+atencion._calificacion = "Malo"
+servidor2._cola.push(copy.deepcopy(atencion))
 
-servidor1.__cola.print
+atencion._nombre = "Santi"
+atencion._tiempoDeAtencion = "19 minutos"
+atencion._calificacion = "Regular"
+servidor2._cola.push(copy.deepcopy(atencion))
 
-#comentame el codigo siguiente
+servidor2._cola.print
+
+
+
+print("Ventanilla 3")
+atencion._nombre = "Bradley"
+atencion._tiempoDeAtencion = "40 minutos"
+atencion._calificacion = "Excelente"
+servidor3._cola.push(copy.deepcopy(atencion))
+
+atencion._nombre = "Messi"
+atencion._tiempoDeAtencion = "10 minutos"
+atencion._calificacion = "Bueno"
+servidor3._cola.push(copy.deepcopy(atencion))
+
+atencion._nombre = "Rafael"
+atencion._tiempoDeAtencion = "19 minutos"
+atencion._calificacion = "Bueno"
+servidor3._cola.push(copy.deepcopy(atencion))
+
+servidor3._cola.print
+
 
 #atencion = Atencion()
 

@@ -31,4 +31,4 @@ class Atencion:
         self.__calificacion = value
 
     def __str__ (self):
-        return f'\nNombre:{self.__nombre}, Tiempo Despacho:{self.__tiempoDeAtencion}, Calificacion:{self.__calificacion}'
+        return f'\nNombre Cliente:{self.__nombre}, Tiempo Despacho:{self.__tiempoDeAtencion}, Calificacion:{self.__calificacion}'
