@@ -30,5 +30,22 @@ class Atencion:
     def _calificacion(self, value):
         self.__calificacion = value
 
+    @property
+    def serealizable(self):
+        return {
+            "nombre": self.__nombre,
+            "tiempoDeAtencion": self.__tiempoDeAtencion,
+            "calificacion": self.__calificacion
+        }
+    
+    def deserealize(data):
+        atencion = Atencion()
+        atencion.__nombre = data["nombre"]
+        atencion.__tiempoDeAtencion = data["tiempoDeAtencion"]
+        atencion.__calificacion = data["calificacion"]
+
+        return atencion
+
+
     def __str__ (self):
         return f'\nNombre Cliente:{self.__nombre}, Tiempo Despacho:{self.__tiempoDeAtencion}, Calificacion:{self.__calificacion}'

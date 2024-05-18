@@ -1,0 +1,17 @@
+[
+    {
+        "nombre": "COco",
+        "tiempoDeAtencion": "30 minutos",
+        "calificacion": "Excelente"
+    },
+    {
+        "nombre": "Messi",
+        "tiempoDeAtencion": "30 minutos",
+        "calificacion": "Excelente"
+    },
+    {
+        "nombre": "Pepe",
+        "tiempoDeAtencion": "30 minutos",
+        "calificacion": "Excelente"
+    }
+] 

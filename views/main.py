@@ -5,71 +5,48 @@ from controls.tda.queue.queue import Queue
 from controls.tda.linked.linkedList import Linked_List
 from models.atencion import Atencion
 from models.servidorPublico import ServidorPublico
+from controls.atencionDaoControl import AtencionDaoControl
+from controls.servidorDaoControl import ServidorDaoControl
 
-servidor1 = ServidorPublico()
-servidor2 = ServidorPublico()
-servidor3 = ServidorPublico()
+servidor1 = ServidorDaoControl()
+servidor2 = ServidorDaoControl()
+servidor3 = ServidorDaoControl()
 
-atencion = Atencion()
+atencionDC = AtencionDaoControl()
+
 
 print("Ventanilla 1")
-atencion._nombre = "Estalin"
-atencion._tiempoDeAtencion = "30 minutos"
-atencion._calificacion = "Excelente"
-servidor1._cola.push(copy.deepcopy(atencion))
+atencionDC._atencion._nombre = "COco"
+atencionDC._atencion._tiempoDeAtencion = "30 minutos"
+atencionDC._atencion._calificacion = "Excelente"
+atencionDC.save
 
-atencion._nombre = "Pepito"
-atencion._tiempoDeAtencion = "10 minutos"
-atencion._calificacion = "Malo"
-servidor1._cola.push(copy.deepcopy(atencion))
-
-atencion._nombre = "Santi"
-atencion._tiempoDeAtencion = "19 minutos"
-atencion._calificacion = "Regular"
-servidor1._cola.push(copy.deepcopy(atencion))
-
-servidor1._cola.print
+servidor1._servidor._cola.push(copy.deepcopy(atencionDC._atencion))
 
 
-
-print("Ventanilla 2")
-atencion._nombre = "Estalin"
-atencion._tiempoDeAtencion = "30 minutos"
-atencion._calificacion = "Excelente"
-servidor2._cola.push(copy.deepcopy(atencion))
-
-atencion._nombre = "Pepito"
-atencion._tiempoDeAtencion = "10 minutos"
-atencion._calificacion = "Malo"
-servidor2._cola.push(copy.deepcopy(atencion))
-
-atencion._nombre = "Santi"
-atencion._tiempoDeAtencion = "19 minutos"
-atencion._calificacion = "Regular"
-servidor2._cola.push(copy.deepcopy(atencion))
-
-servidor2._cola.print
+atencionDC._atencion._nombre = "Messi"
+atencionDC._atencion._tiempoDeAtencion = "30 minutos"
+atencionDC._atencion._calificacion = "Excelente"
+atencionDC.save
 
 
+servidor1._servidor._cola.push(copy.deepcopy(atencionDC._atencion))
 
-print("Ventanilla 3")
-atencion._nombre = "Bradley"
-atencion._tiempoDeAtencion = "40 minutos"
-atencion._calificacion = "Excelente"
-servidor3._cola.push(copy.deepcopy(atencion))
 
-atencion._nombre = "Messi"
-atencion._tiempoDeAtencion = "10 minutos"
-atencion._calificacion = "Bueno"
-servidor3._cola.push(copy.deepcopy(atencion))
+atencionDC._atencion._nombre = "Pepe"
+atencionDC._atencion._tiempoDeAtencion = "30 minutos"
+atencionDC._atencion._calificacion = "Excelente"
+atencionDC.save
 
-atencion._nombre = "Rafael"
-atencion._tiempoDeAtencion = "19 minutos"
-atencion._calificacion = "Bueno"
-servidor3._cola.push(copy.deepcopy(atencion))
 
-servidor3._cola.print
+servidor1._servidor._cola.push(copy.deepcopy(atencionDC._atencion))
 
+
+servidor1._servidor._cola.print
+
+servidor1._servidor._cola.pop()
+
+servidor1._servidor._cola.print
 
 #atencion = Atencion()
 

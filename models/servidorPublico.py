@@ -4,7 +4,7 @@ class ServidorPublico:
     def __init__(self):
         self.__ventanilla = 0
         self.__nombre = ''
-        self.__cola = Queue(3)
+        self.__cola = None
 
     @property
     def _ventanilla(self):
@@ -24,9 +24,26 @@ class ServidorPublico:
 
     @property
     def _cola(self):
+        if self.__cola is None:
+            self.__cola = Queue(3)
         return self.__cola
 
     @_cola.setter
     def _cola(self, value):
         self.__cola = value
 
+    @property
+    def serealizable(self):
+        return {
+            "ventanilla": self.__ventanilla,
+            "nombre": self.__nombre,
+            "cola": self.__cola
+        }
+    
+    def deserealize(self, data):
+        servidor = ServidorPublico()
+        servidor.__ventanilla = data["ventanilla"]
+        servidor.__nombre = data["nombre"]
+        servidor.__cola = data["cola"]
+
+        return servidor
