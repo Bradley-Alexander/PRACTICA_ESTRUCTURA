@@ -15,7 +15,7 @@ class QueueOperation(Linked_List):
     @property
     def verifyTop(self):
         return self._lenght < self._top
-    
+     
     
     def queue(self, data):
         if self.verifyTop:

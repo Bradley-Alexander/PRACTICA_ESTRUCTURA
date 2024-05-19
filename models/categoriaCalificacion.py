@@ -1,10 +1,10 @@
 import enum
 class CategoriaCalificacion(enum.Enum):
-    MALO = 1
-    REGULAR = 2
-    BUENO = 3
-    MUY_BUENO = 4
-    EXCELENTE = 5
+    MALO = 0
+    REGULAR = 1
+    BUENO = 2
+    MUY_BUENO = 3
+    EXCELENTE = 4
 
     def getInstance(self):
         if self.instance == None:

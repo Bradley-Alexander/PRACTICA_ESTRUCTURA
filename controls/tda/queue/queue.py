@@ -1,5 +1,5 @@
 from controls.tda.queue.queueOperations import QueueOperation
-
+ 
 class Queue:
     def __init__(self, tope):
         self.__queue = QueueOperation(tope)
