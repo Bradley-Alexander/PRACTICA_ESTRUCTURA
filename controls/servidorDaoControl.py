@@ -1,8 +1,9 @@
 from controls.dao.daoAdapter import DaoAdapter
 from models.servidorPublico import ServidorPublico
 
-class ServidorDaoControl:
+class ServidorDaoControl(DaoAdapter):
     def __init__(self):
+        super().__init__(ServidorPublico)
         self.__servidor = None
 
     @property

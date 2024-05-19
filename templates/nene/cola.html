@@ -1,0 +1,38 @@
+{% extends "template.html" %}
+{% block content %}
+<h2 class="text-white">Servidor 1</h2>
+<div class="booking-form-body">
+    <a href="/atencion/ver" class="btn btn-danger">AGREGAR</a>
+
+    <form action="/atenciones/eliminar" method="post">
+        <button type="submit" class="btn btn-danger">Eliminar</button>
+    </form>
+
+    <table id="tabla" class="table text-white">
+        <thead>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Calificacion</th>
+            <th>Tiempo</th>
+        </thead>
+        <tbody>
+            {% for item in lista %}
+            <tr>
+                <td>{{item.id}} </td>
+                <td>{{item.nombre}} </td>
+                <td>{{item.calificacion}}</td>
+                <td>{{item.tiempoDeAtencion}}</td>
+                
+                
+                
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+
+
+
+
+{% endblock %}

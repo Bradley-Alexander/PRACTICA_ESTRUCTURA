@@ -17,3 +17,4 @@ class Queue:
     @property
     def verify(self):
         return self.__queue.verifyTop
+    

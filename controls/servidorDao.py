@@ -20,4 +20,5 @@ class ServidorDao(DaoAdapter):
     
     @property
     def save(self):
+        self.get_servidor()._id = self._lista._lenght
         self._save(self.get_servidor())

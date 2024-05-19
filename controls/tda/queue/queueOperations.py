@@ -6,7 +6,7 @@ class QueueOperation(Linked_List):
 
     @property
     def _top(self):
-        return self.__top
+        return self.__top 
 
     @_top.setter
     def _top(self, value):

@@ -7,47 +7,67 @@ from models.atencion import Atencion
 from models.servidorPublico import ServidorPublico
 from controls.atencionDaoControl import AtencionDaoControl
 from controls.servidorDaoControl import ServidorDaoControl
+from controls.tda.queue.queueArray import QueueArray
 
-servidor1 = ServidorDaoControl()
-servidor2 = ServidorDaoControl()
-servidor3 = ServidorDaoControl()
+servidor1 = Queue(7)
+servidor2 = Queue(7)
+servidor3 = Queue(7)
 
-atencionDC = AtencionDaoControl()
+
+
+atencionDC1 = AtencionDaoControl()
+atencionDC2 = AtencionDaoControl()
+atencionDC3 = AtencionDaoControl()
 
 
 print("Ventanilla 1")
-atencionDC._atencion._nombre = "COco"
-atencionDC._atencion._tiempoDeAtencion = "30 minutos"
-atencionDC._atencion._calificacion = "Excelente"
-atencionDC.save
+atencionDC1._atencion._nombre = "COco"
+atencionDC1._atencion._tiempoDeAtencion = "30 minutos"
+atencionDC1._atencion._calificacion = "BUENO"
+atencionDC1.save
 
-servidor1._servidor._cola.push(copy.deepcopy(atencionDC._atencion))
+servidor1.push(copy.deepcopy(atencionDC1._atencion))
 
-
-atencionDC._atencion._nombre = "Messi"
-atencionDC._atencion._tiempoDeAtencion = "30 minutos"
-atencionDC._atencion._calificacion = "Excelente"
-atencionDC.save
-
-
-servidor1._servidor._cola.push(copy.deepcopy(atencionDC._atencion))
+atencionDC1._atencion._nombre = "Messi"
+atencionDC1._atencion._tiempoDeAtencion = "30 minutos"
+atencionDC1._atencion._calificacion = "MALO"
+atencionDC1.save
 
 
-atencionDC._atencion._nombre = "Pepe"
-atencionDC._atencion._tiempoDeAtencion = "30 minutos"
-atencionDC._atencion._calificacion = "Excelente"
-atencionDC.save
+servidor1.push(copy.deepcopy(atencionDC1._atencion))
 
 
-servidor1._servidor._cola.push(copy.deepcopy(atencionDC._atencion))
+atencionDC1._atencion._nombre = "Pepe"
+atencionDC1._atencion._tiempoDeAtencion = "30 minutos"
+atencionDC1._atencion._calificacion = "REGULAR"
+atencionDC1.save
 
 
-servidor1._servidor._cola.print
+servidor1.push(copy.deepcopy(atencionDC1._atencion))
 
-servidor1._servidor._cola.pop()
 
-servidor1._servidor._cola.print
+print("-----------------------------------------------------------------------")
+servidor1.print
+print("-----------------------------------------------------------------------")
+servidor1.pop()
+servidor1.print
+servidor1.pop()
 
+
+
+servidorArray = QueueArray(3)
+
+atencionDC1._atencion._nombre = "Pepe"
+atencionDC1._atencion._tiempoDeAtencion = "30 minutos"
+atencionDC1._atencion._calificacion = "REGULAR"
+
+servidorArray.enqueue(atencionDC1._atencion)
+servidorArray.enqueue(2)
+servidorArray.enqueue(3)
+print("000000000000000000000000000000000")
+servidorArray.print
+servidorArray.dequeue()
+servidorArray.print
 #atencion = Atencion()
 
 #ventanilla1 = Queue(5)

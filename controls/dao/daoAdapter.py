@@ -1,6 +1,5 @@
 from typing import TypeVar, Generic, Type
 from controls.tda.linked.linkedList import Linked_List
-
 import json
 import os
 
@@ -42,11 +41,7 @@ class DaoAdapter(Generic[T]):
         aux = []
         self._list()
         for i in range(0, self.lista._lenght):
-            aux.append(self.lista.get(i).serealizable)
-            # if i < self.lista._lenght - 1:
-            #     aux += str(json.dumps(self.lista.get(i).serializable)) + ","
-            # else:
-            #     aux += str(json.dumps(self.lista.get(i).serializable))
+            aux.append(self.lista.get(i).serealizable) 
         return aux
     
     def _save(self, data: T) -> T:
