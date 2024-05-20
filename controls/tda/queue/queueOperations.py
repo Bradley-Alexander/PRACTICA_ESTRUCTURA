@@ -22,7 +22,7 @@ class QueueOperation(Linked_List):
             self.add(data, self._lenght)
         else:
             raise print("Queue is Full")
-        
+    
     @property
     def dequeue(self):
         if self.isEmpty:

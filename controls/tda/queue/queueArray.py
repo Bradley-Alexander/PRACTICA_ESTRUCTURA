@@ -10,7 +10,6 @@ class QueueArray:
     def pop(self):
         return self.queue_operations.dequeue
 
-
     @property
     def print_queue(self):
         return self.queue_operations.get_all()
