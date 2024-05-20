@@ -1,5 +1,7 @@
 import sys
 import copy
+import psutil
+import os
 sys.path.append('../')
 from controls.tda.queue.queue import Queue
 from models.atencion import Atencion
@@ -11,121 +13,12 @@ from time import time
 #inicioList = time()
 
 atencionDC1 = AtencionDaoControl()
+atencionDC2 = AtencionDaoControl()
+atencionDC3 = AtencionDaoControl()
 
 servidor1 = Queue(3)
 
-print("Ventanilla 1")
 
-atencionDC1._atencion._nombre = "Juan"
-atencionDC1._atencion._tiempoDeAtencion = "15 minutos"
-atencionDC1._atencion._calificacion = "BUENO"
-
-
-servidor1.push(atencionDC1._atencion)
-
-
-atencionDC1._atencion._nombre = "Messi"
-atencionDC1._atencion._tiempoDeAtencion = "30 minutos"
-atencionDC1._atencion._calificacion = "MALO"
-
-
-servidor1.push(atencionDC1._atencion)
-
-
-atencionDC1._atencion._nombre = "Pepe"
-atencionDC1._atencion._tiempoDeAtencion = "5 minutos"
-atencionDC1._atencion._calificacion = "REGULAR"
-
-
-servidor1.push(atencionDC1._atencion)
-
-
-print("-----------------------------------------------------------------------")
-servidor1.print
-print("-----------------------------------------------------------------------")
-servidor1.pop()
-servidor1.print
-print("-----------------------------------------------------------------------")
-servidor1.pop()
-servidor1.print
-
-#finList = time()
-
-servidor2 = Queue(3)
-servidor3 = Queue(3)
-
-print("-----------------------------------------------------------------------")
-print("-----------------------------------------------------------------------")
-print("Ventanilla 2")
-print("-----------------------------------------------------------------------")
-print("-----------------------------------------------------------------------")
-
-atencionDC1._atencion._nombre = "Carlos"
-atencionDC1._atencion._tiempoDeAtencion = "30 minutos"
-atencionDC1._atencion._calificacion = "BUENO"
-
-servidor2.push(atencionDC1._atencion)
-
-
-atencionDC1._atencion._nombre = "Pepe"
-atencionDC1._atencion._tiempoDeAtencion = "25 minutos"
-atencionDC1._atencion._calificacion = "BUENO"
-
-servidor2.push(atencionDC1._atencion)
-
-
-atencionDC1._atencion._nombre = "Jose"
-atencionDC1._atencion._tiempoDeAtencion = "45 minutos"
-atencionDC1._atencion._calificacion = "EXELENTE"
-
-servidor2.push(atencionDC1._atencion)
-
-print("-----------------------------------------------------------------------")
-servidor2.print
-print("-----------------------------------------------------------------------")
-servidor2.pop()
-servidor2.print
-print("-----------------------------------------------------------------------")
-servidor2.pop()
-servidor2.print
-print("-----------------------------------------------------------------------")
-
-
-print("-----------------------------------------------------------------------")
-print("-----------------------------------------------------------------------")
-print("Ventanilla 3")
-print("-----------------------------------------------------------------------")
-print("-----------------------------------------------------------------------")
-
-atencionDC1._atencion._nombre = "Cristian"
-atencionDC1._atencion._tiempoDeAtencion = "15 minutos"
-atencionDC1._atencion._calificacion = "MALO"
-
-servidor3.push(atencionDC1._atencion)
-
-
-atencionDC1._atencion._nombre = "Esteban"
-atencionDC1._atencion._tiempoDeAtencion = "15 minutos"
-atencionDC1._atencion._calificacion = "REGULAR"
-
-servidor3.push(atencionDC1._atencion)
-
-
-atencionDC1._atencion._nombre = "Santiago"
-atencionDC1._atencion._tiempoDeAtencion = "15 minutos"
-atencionDC1._atencion._calificacion = "BUENO"
-
-servidor3.push(atencionDC1._atencion)
-
-print("-----------------------------------------------------------------------")
-servidor3.print
-print("-----------------------------------------------------------------------")
-servidor3.pop()
-servidor3.print
-print("-----------------------------------------------------------------------")
-servidor3.pop()
-servidor3.print
-print("-----------------------------------------------------------------------")
 #inicioArray = time()
 
 atencionDC2 = AtencionDaoControl()
@@ -162,8 +55,14 @@ servidorArray.print
 servidorArray.pop()
 servidorArray.print
 
+print("-------------------------------------------------------")
+print("-------------------------------------------------------")
+process = psutil.Process(os.getpid())
+memory_usage = process.memory_info().rss 
+print(f"La memoria utilizada por el programa es: {memory_usage} MB")
 #finArray = time()
-
+print("-------------------------------------------------------")
+print("-------------------------------------------------------")
 
 
 
@@ -180,10 +79,9 @@ def get_size(obj):
     return sys.getsizeof(obj)
 
 vector_queue = QueueArray(1000)
-# Cola con lista enlazada (deque en Python)
+
 linked_list_queue = Queue(1000) 
 
-# Agregar elementos a las colas
 for i in range(1000):
     vector_queue.push(i)
     linked_list_queue.push(i)

@@ -1,6 +1,6 @@
 {% extends "template.html" %}
 {% block content %}
-<h2 class="text-white">Cola de Atenciones</h2>
+<h2 class="text-white">Ventanilla 1</h2>
 <div class="booking-form-body">
     <a href="/atencion/ver" class="btn btn-danger">AGREGAR</a>
 
@@ -13,7 +13,7 @@
             <th>ID</th>
             <th>Nombre</th>
             <th>Calificacion</th>
-            <th>Tiempo</th>
+            <th>Tiempo (min)</th>
         </thead>
         <tbody>
             {% for item in lista %}
@@ -21,13 +21,67 @@
                 <td>{{item.id}} </td>
                 <td>{{item.nombre}} </td>
                 <td>{{item.calificacion}}</td>
-                <td>{{item.tiempoDeAtencion}}</td>
+                <td class="tiempo">{{item.tiempoDeAtencion}}</td>
                 
                 
                 
             </tr>
         {% endfor %}
         </tbody>
+        <th>TIEMPO TOTAL</th>
+        <th></th>
+        <th></th>
+        <th id="tiempo-total"></th>
+    </table>
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        let totalTiempo = 0;
+    
+        document.querySelectorAll('.tiempo').forEach(td => {
+            totalTiempo += parseInt(td.textContent, 10);
+        });
+    
+        document.getElementById('tiempo-total').textContent = totalTiempo;
+    });
+    </script>
+
+<h2 class="text-white">Ventanilla 2</h2>
+<div class="booking-form-body">
+    <a href="/atencion/ver" class="btn btn-danger">AGREGAR</a>
+
+    <form action="/atenciones/eliminar" method="post">
+        <button type="submit" class="btn btn-danger">Eliminar</button>
+    </form>
+
+    <table class="table text-white tabla-aleatoria1">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Calificación</th>
+                <th>Tiempo (min)</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in lista %}
+            <tr>
+                <td>{{item.id}}</td>
+                <td>{{item.nombre}}</td>
+                <td>{{item.calificacion}}</td>
+                <td class="tiempo3">{{item.tiempoDeAtencion}}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+        <tfoot>
+            <tr>
+                <th>TIEMPO TOTAL</th>
+                <th></th>
+                <th></th>
+                <th class="tiempo-total"></th>
+            </tr>
+        </tfoot>
     </table>
 </div>
 
@@ -35,4 +89,148 @@
 
 
 
+
+<h2 class="text-white">Ventanilla 3</h2>
+<div class="booking-form-body">
+    <a href="/atencion/ver" class="btn btn-danger">AGREGAR</a>
+
+    <form action="/atenciones/eliminar" method="post">
+        <button type="submit" class="btn btn-danger">Eliminar</button>
+    </form>
+
+    <table class="table text-white tabla-aleatoria2">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Calificación</th>
+                <th>Tiempo (min)</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in lista %}
+            <tr>
+                <td>{{item.id}}</td>
+                <td>{{item.nombre}}</td>
+                <td>{{item.calificacion}}</td>
+                <td class="tiempo3">{{item.tiempoDeAtencion}}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+        <tfoot>
+            <tr>
+                <th>TIEMPO TOTAL</th>
+                <th></th>
+                <th></th>
+                <th class="tiempo-total"></th>
+            </tr>
+        </tfoot>
+    </table>
+</div>
+
+
+
+
+
+<script>
+    function getRandomInt(min, max) {
+        min = Math.ceil(min);
+        max = Math.floor(max);
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+
+    function getRandomName() {
+        const names = ["Ana", "Luis", "Carlos", "María", "José", "Lorena", "Pedro", "Sofía", "Maricela", "Bradley", "Raul"];
+        return names[getRandomInt(0, names.length - 1)];
+    }
+
+    function getRandomRating() {
+        const ratings = ["Malo", "Regular", "Bueno", "Muy Bueno", "Excelente"];
+        return ratings[getRandomInt(0, ratings.length - 1)];
+    }
+
+    function getRandomTime() {
+        return getRandomInt(5, 120);
+    }
+
+    document.addEventListener("DOMContentLoaded", function() {
+        document.querySelectorAll('.tabla-aleatoria1').forEach(tabla => {
+            let totalTiempo = 0;
+
+            // Seleccionar solo las filas del cuerpo de la tabla (tbody)
+            const filas = tabla.querySelectorAll('tbody tr');
+
+            filas.forEach((tr, index) => {
+                const id = index + 1; // IDs secuenciales empezando desde 1
+                const nombre = getRandomName();
+                const calificacion = getRandomRating();
+                const tiempo = getRandomTime();
+
+                tr.cells[0].textContent = id;
+                tr.cells[1].textContent = nombre;
+                tr.cells[2].textContent = calificacion;
+                tr.cells[3].textContent = tiempo;
+
+                totalTiempo += tiempo;
+            });
+
+            // Actualizar el tiempo total en el pie de la tabla (tfoot)
+            const tiempoTotalElement = tabla.querySelector('.tiempo-total');
+            if (tiempoTotalElement) {
+                tiempoTotalElement.textContent = totalTiempo;
+            }
+        });
+    });
+</script>
+
+<script>
+    function getRandomInt(min, max) {
+        min = Math.ceil(min);
+        max = Math.floor(max);
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+
+    function getRandomName() {
+        const names = ["Isabel", "Luis", "Carlos", "Steven", "José", "Laura", "Alexander", "Sofía"];
+        return names[getRandomInt(0, names.length - 1)];
+    }
+
+    function getRandomRating() {
+        const ratings = ["Malo", "Regular", "Bueno", "Muy Bueno", "Excelente"];
+        return ratings[getRandomInt(0, ratings.length - 1)];
+    }
+
+    function getRandomTime() {
+        return getRandomInt(5, 120);
+    }
+
+    document.addEventListener("DOMContentLoaded", function() {
+        document.querySelectorAll('.tabla-aleatoria2').forEach(tabla => {
+            let totalTiempo = 0;
+
+            // Seleccionar solo las filas del cuerpo de la tabla (tbody)
+            const filas = tabla.querySelectorAll('tbody tr');
+
+            filas.forEach((tr, index) => {
+                const id = index + 1; // IDs secuenciales empezando desde 1
+                const nombre = getRandomName();
+                const calificacion = getRandomRating();
+                const tiempo = getRandomTime();
+
+                tr.cells[0].textContent = id;
+                tr.cells[1].textContent = nombre;
+                tr.cells[2].textContent = calificacion;
+                tr.cells[3].textContent = tiempo;
+
+                totalTiempo += tiempo;
+            });
+
+            // Actualizar el tiempo total en el pie de la tabla (tfoot)
+            const tiempoTotalElement = tabla.querySelector('.tiempo-total');
+            if (tiempoTotalElement) {
+                tiempoTotalElement.textContent = totalTiempo;
+            }
+        });
+    });
+</script>
 {% endblock %}
