@@ -157,11 +157,10 @@
         document.querySelectorAll('.tabla-aleatoria1').forEach(tabla => {
             let totalTiempo = 0;
 
-            // Seleccionar solo las filas del cuerpo de la tabla (tbody)
             const filas = tabla.querySelectorAll('tbody tr');
 
             filas.forEach((tr, index) => {
-                const id = index + 1; // IDs secuenciales empezando desde 1
+                const id = index + 1; 
                 const nombre = getRandomName();
                 const calificacion = getRandomRating();
                 const tiempo = getRandomTime();
@@ -174,7 +173,6 @@
                 totalTiempo += tiempo;
             });
 
-            // Actualizar el tiempo total en el pie de la tabla (tfoot)
             const tiempoTotalElement = tabla.querySelector('.tiempo-total');
             if (tiempoTotalElement) {
                 tiempoTotalElement.textContent = totalTiempo;
@@ -208,11 +206,10 @@
         document.querySelectorAll('.tabla-aleatoria2').forEach(tabla => {
             let totalTiempo = 0;
 
-            // Seleccionar solo las filas del cuerpo de la tabla (tbody)
             const filas = tabla.querySelectorAll('tbody tr');
 
             filas.forEach((tr, index) => {
-                const id = index + 1; // IDs secuenciales empezando desde 1
+                const id = index + 1; 
                 const nombre = getRandomName();
                 const calificacion = getRandomRating();
                 const tiempo = getRandomTime();
@@ -225,7 +222,7 @@
                 totalTiempo += tiempo;
             });
 
-            // Actualizar el tiempo total en el pie de la tabla (tfoot)
+           
             const tiempoTotalElement = tabla.querySelector('.tiempo-total');
             if (tiempoTotalElement) {
                 tiempoTotalElement.textContent = totalTiempo;

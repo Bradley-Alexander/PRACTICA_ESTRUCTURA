@@ -25,7 +25,6 @@ def ver_guardar():
     return render_template("nene/guardarCola.html")
 
 
-#guardar personas
 @router.route('/atenciones/guardar', methods=["POST"])
 def guardar_personas():
     ad = AtencionDaoControl()
@@ -89,26 +88,3 @@ def agregar_a_cola(pos):
     return redirect("/atenciones", code=302)
 
 
-@router.route('/cola')
-def cola():
-    lista = [
-        {'nombre': 'Juan', 'calificacion': 'Bueno', 'tiempoDeAtencion': 15},
-        {'nombre': 'Bradley', 'calificacion': 'Malo', 'tiempoDeAtencion': 10},
-        {'nombre': 'Alexander', 'calificacion': 'Regular', 'tiempoDeAtencion': 35},
-        {'nombre': 'Maria', 'calificacion': 'Muy Bueno', 'tiempoDeAtencion': 20},
-        {'nombre': 'Raul', 'calificacion': 'Exelente', 'tiempoDeAtencion': 15},
-        {'nombre': 'Nelson', 'calificacion': 'Malo', 'tiempoDeAtencion': 15},
-        {'nombre': 'Santiago', 'calificacion': 'Regular', 'tiempoDeAtencion': 65},
-        {'nombre': 'Jared', 'calificacion': 'Bueno', 'tiempoDeAtencion': 5},
-        {'nombre': 'Santiago', 'calificacion': 'Muy Bueno', 'tiempoDeAtencion': 15},
-        {'nombre': 'Jair', 'calificacion': 'Exelente', 'tiempoDeAtencion': 45},
-        {'nombre': 'Elizabeth', 'calificacion': 'Malo', 'tiempoDeAtencion': 20},
-        {'nombre': 'Carlos', 'calificacion': 'Bueno', 'tiempoDeAtencion': 30}
-        # Agrega más elementos según sea necesario
-    ]
-
-    # Selecciona 5 elementos aleatorios (o menos si hay menos de 5 elementos en la lista)
-    num_items = min(5, len(lista))
-    lista_aleatoria = random.sample(lista, num_items)
-
-    return render_template('cola.html', lista=lista_aleatoria)
